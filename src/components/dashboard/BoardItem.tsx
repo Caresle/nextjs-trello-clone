@@ -1,5 +1,7 @@
 import React from "react";
-import { Card, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardFooter, CardHeader, CardTitle } from "../ui/card";
+import { Button } from "../ui/button";
+import Icon from "../shared/Icon";
 
 export default function BoardItem({ boardName = "" }: { boardName: string }) {
 	return (
@@ -7,6 +9,15 @@ export default function BoardItem({ boardName = "" }: { boardName: string }) {
 			<CardHeader>
 				<CardTitle className="text-center">{boardName}</CardTitle>
 			</CardHeader>
+			<CardFooter className="flex justify-end">
+				<Button
+					size={"icon"}
+					variant={"secondary"}
+					className="border border-gray-800"
+				>
+					<Icon.Misc.Star />
+				</Button>
+			</CardFooter>
 		</Card>
 	);
 }

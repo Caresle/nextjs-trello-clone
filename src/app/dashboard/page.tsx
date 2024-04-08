@@ -22,7 +22,7 @@ export default function Dashboard() {
 	return (
 		<div className="flex flex-row">
 			<SideMenuDashboard />
-			<div className="w-11/12">
+			<div className="w-10/12">
 				{/* Actions section */}
 				<NewBoardCard />
 				{/* Content section */}
