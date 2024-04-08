@@ -1,6 +1,11 @@
-import { IoLogInOutline, IoLogOutOutline, IoAdd } from "react-icons/io5";
+import {
+	IoLogInOutline,
+	IoLogOutOutline,
+	IoAdd,
+	IoEllipsisHorizontal,
+} from "react-icons/io5";
 import { FaGithub, FaGoogle, FaCog } from "react-icons/fa";
-import { GoProjectRoadmap } from "react-icons/go";
+import { GoProjectRoadmap, GoPencil } from "react-icons/go";
 import { IoMdHome } from "react-icons/io";
 import { PiStarThin } from "react-icons/pi";
 const Icon = {
@@ -10,6 +15,8 @@ const Icon = {
 		Add: IoAdd,
 		GoToProjects: GoProjectRoadmap,
 		Config: FaCog,
+		Options: IoEllipsisHorizontal,
+		Edit: GoPencil,
 	},
 	Social: {
 		Github: FaGithub,

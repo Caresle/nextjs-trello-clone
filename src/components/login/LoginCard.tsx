@@ -19,6 +19,7 @@ export default function LoginCard() {
 				<CardTitle className="text-center">Welcome to Rello</CardTitle>
 				<div className="w-full flex justify-center">
 					<Image
+						priority
 						className="rounded-full"
 						src="/logo.jpeg"
 						width={128}
