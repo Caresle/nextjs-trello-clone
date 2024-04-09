@@ -1,4 +1,5 @@
 import BoardSection from "@/components/board/BoardSection";
+import TaskModalDetails from "@/components/board/TaskModalDetails";
 import { BoardSectionProps } from "@/types/board/board";
 import React from "react";
 
@@ -45,7 +46,7 @@ export default function Board({ params }: { params: BoardParams }) {
 	return (
 		<>
 			<div>Board {board}</div>
-
+			<TaskModalDetails />
 			{/* Board container */}
 			<div className="grid grid-cols-3 gap-3">
 				{boards.map((e) => (
