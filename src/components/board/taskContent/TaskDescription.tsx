@@ -25,7 +25,7 @@ export default function TaskDescription() {
 
 	return (
 		<>
-			<div className="flex items-center font-bold text-2xl">
+			<div className="flex items-center font-bold text-xl">
 				<Icon.Misc.AlignLeft />
 				<h3 className="ml-2">Description</h3>
 			</div>
