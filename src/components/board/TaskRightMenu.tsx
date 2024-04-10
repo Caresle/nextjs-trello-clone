@@ -13,7 +13,7 @@ const TaskMenuItem = ({
 		<Button
 			variant={"secondary"}
 			size={"sm"}
-			className="w-full flex justify-start items-center"
+			className="w-full flex justify-start items-center hover:bg-slate-300 transition-all my-2"
 		>
 			<span className="mr-2 text-xl">{icon}</span>
 			<span className="font-bold">{name}</span>
@@ -26,6 +26,18 @@ export default function TaskRightMenu() {
 		{
 			icon: <Icon.Actions.Add />,
 			name: "Test 1",
+		},
+		{
+			icon: <Icon.Actions.Close />,
+			name: "Test 2",
+		},
+		{
+			icon: <Icon.Actions.Config />,
+			name: "Test 3",
+		},
+		{
+			icon: <Icon.Actions.Edit />,
+			name: "Test 4",
 		},
 	];
 	return (

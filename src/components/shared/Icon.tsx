@@ -7,8 +7,11 @@ import {
 } from "react-icons/io5";
 import { FaGithub, FaGoogle, FaCog, FaRegCreditCard } from "react-icons/fa";
 import { GoProjectRoadmap, GoPencil } from "react-icons/go";
-import { IoMdHome } from "react-icons/io";
+import { IoMdHome, IoMdSave } from "react-icons/io";
 import { PiStarThin } from "react-icons/pi";
+import { MdFormatAlignLeft } from "react-icons/md";
+import { RxLetterCaseToggle } from "react-icons/rx";
+
 const Icon = {
 	Actions: {
 		Login: IoLogInOutline,
@@ -19,6 +22,7 @@ const Icon = {
 		Options: IoEllipsisHorizontal,
 		Edit: GoPencil,
 		Close: IoClose,
+		Save: IoMdSave,
 	},
 	Social: {
 		Github: FaGithub,
@@ -28,6 +32,8 @@ const Icon = {
 		Home: IoMdHome,
 		Star: PiStarThin,
 		Card: FaRegCreditCard,
+		AlignLeft: MdFormatAlignLeft,
+		LetterCase: RxLetterCaseToggle,
 	},
 };
 
