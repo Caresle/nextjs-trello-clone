@@ -11,6 +11,7 @@ import { IoMdHome, IoMdSave } from "react-icons/io";
 import { PiStarThin } from "react-icons/pi";
 import { MdFormatAlignLeft } from "react-icons/md";
 import { RxLetterCaseToggle } from "react-icons/rx";
+import { CiStar } from "react-icons/ci";
 
 const Icon = {
 	Actions: {
@@ -23,6 +24,7 @@ const Icon = {
 		Edit: GoPencil,
 		Close: IoClose,
 		Save: IoMdSave,
+		Favorite: CiStar,
 	},
 	Social: {
 		Github: FaGithub,

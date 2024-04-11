@@ -5,7 +5,7 @@ import TopBarButton from "./buttons/TopBarButton";
 
 export default function TopBar() {
 	return (
-		<div className="w-full p-3 bg-sky-600 text-white font-bold shadow-md flex">
+		<div className="w-full h-12 p-3 bg-sky-600 text-white font-bold shadow-md flex items-center">
 			{/* Logo Company */}
 			{/* <div>
 				<div className="w-[48px] h-[48px]"></div>

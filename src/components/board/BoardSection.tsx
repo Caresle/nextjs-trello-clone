@@ -8,7 +8,7 @@ import { Button } from "../ui/button";
 export default function BoardSection({ label, items }: BoardSectionProps) {
 	return (
 		<Card className="border border-gray-300 bg-gray-100">
-			<CardHeader>
+			<CardHeader className="flex flex-col justify-center h-10">
 				<CardTitle className="flex justify-between text-base items-center">
 					<div>{label}</div>
 					<Button
