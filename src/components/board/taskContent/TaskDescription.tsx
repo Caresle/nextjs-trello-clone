@@ -1,9 +1,12 @@
 "use client";
 import Icon from "@/components/shared/Icon";
-import React, { useState } from "react";
+import React from "react";
 import TaskTextArea from "./TaskTextArea";
+import { useToggleItem } from "@/hooks/useToggleItem";
 
-const PlaceholderDescription = ({ onClick }: { onClick: () => void }) => {
+type OnClickFn = () => void;
+
+const PlaceholderDescription = ({ onClick }: { onClick: OnClickFn }) => {
 	return (
 		<div
 			onClick={onClick}
@@ -16,23 +19,25 @@ const PlaceholderDescription = ({ onClick }: { onClick: () => void }) => {
 	);
 };
 
-export default function TaskDescription() {
-	const [showTextArea, setShowTextArea] = useState(false);
+const TitleTask = () => {
+	return (
+		<div className="flex items-center font-bold text-xl">
+			<Icon.Misc.AlignLeft />
+			<h3 className="ml-2">Description</h3>
+		</div>
+	);
+};
 
-	const toggleTextArea = () => {
-		setShowTextArea(!showTextArea);
-	};
+export default function TaskDescription() {
+	const textAreaInput = useToggleItem();
 
 	return (
 		<>
-			<div className="flex items-center font-bold text-xl">
-				<Icon.Misc.AlignLeft />
-				<h3 className="ml-2">Description</h3>
-			</div>
-			{showTextArea ? (
-				<TaskTextArea onCancel={toggleTextArea} />
+			<TitleTask />
+			{textAreaInput.show ? (
+				<TaskTextArea onCancel={textAreaInput.toggleItem} />
 			) : (
-				<PlaceholderDescription onClick={toggleTextArea} />
+				<PlaceholderDescription onClick={textAreaInput.toggleItem} />
 			)}
 		</>
 	);
