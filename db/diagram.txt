@@ -1,0 +1,25 @@
+Table users {
+  id int [pk]
+  username varchar
+  password varchar
+}
+
+Table boards {
+  id int [pk]
+  id_user int [ref: > users.id]
+  name varchar
+}
+
+Table board_det {
+  id int [pk]
+  id_board int [ref: > boards.id]
+  name varchar
+  id_board_column int [ref: < board_column.id]
+  description varchar
+
+}
+
+Table board_column {
+  id int [pk]
+  name varchar
+}
