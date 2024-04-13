@@ -13,8 +13,37 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model UserPrisma {
+model User {
+	@@map("users")
+
 	id Int @id @default(autoincrement())
 	username String
 	password String
+	boards Boards[]
+}
+
+model Boards {
+	@@map("boards")
+
+	id Int @id @default(autoincrement())
+	user User @relation(fields: [idUser], references: [id])
+	idUser Int @map("id_user")
+	boardDet BoardDet[]
+	name String
+}
+
+model BoardColumn {
+	@@map("board_column")
+	id Int @id @default(autoincrement())
+	name String
+	boardDet BoardDet[]
+}
+
+model BoardDet {
+	@@map("board_det")
+	id Int @id @default(autoincrement())
+	board Boards @relation(fields: [idBoard], references: [id])
+	idBoard Int @map("id_board")
+	boardColumn BoardColumn @relation(fields: [idBoardColumn], references: [id])
+	idBoardColumn Int @map("id_board_column")
 }
