@@ -2,18 +2,19 @@ import { z } from "zod";
 
 const createOrUpdateInfo = {
 	name: z.string().min(3),
-	idUser: z.number(),
+	idBoard: z.number(),
+	idBoardColumn: z.number(),
 };
 
-export const BoardSchemaCreate = z.object({
+export const BoardDetCreated = z.object({
 	...createOrUpdateInfo,
 });
 
-export const BoardSchemaUpdate = z.object({
+export const BoardDetUpdated = z.object({
 	...createOrUpdateInfo,
 	id: z.number(),
 });
 
-export const BoardSchemaDelete = z.object({
+export const BoardDetDeleted = z.object({
 	id: z.number(),
 });

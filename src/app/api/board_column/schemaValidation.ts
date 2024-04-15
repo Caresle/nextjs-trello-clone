@@ -1,14 +1,17 @@
 import { z } from "zod";
 
-export const BoardColumnSchemaCreate = z.object({
+const createOrUpdateInfo = {
 	name: z.string().min(3),
 	idBoard: z.number(),
+};
+
+export const BoardColumnSchemaCreate = z.object({
+	...createOrUpdateInfo,
 });
 
 export const BoardColumnSchemaUpdate = z.object({
+	...createOrUpdateInfo,
 	id: z.number(),
-	name: z.string().min(3),
-	idBoard: z.number(),
 });
 
 export const BoardColumnSchemaDelete = z.object({
