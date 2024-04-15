@@ -29,6 +29,7 @@ model Boards {
 	user User @relation(fields: [idUser], references: [id])
 	idUser Int @map("id_user")
 	boardDet BoardDet[]
+	boardColumn BoardColumn[]
 	name String
 }
 
@@ -37,6 +38,8 @@ model BoardColumn {
 	id Int @id @default(autoincrement())
 	name String
 	boardDet BoardDet[]
+	idBoard Int @map("id_board")
+	board Boards @relation(fields: [idBoard], references: [id])
 }
 
 model BoardDet {
