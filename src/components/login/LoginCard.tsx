@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { ChangeEventHandler, useState } from "react";
 import {
 	Card,
 	CardContent,
@@ -11,8 +12,24 @@ import { Input } from "../ui/input";
 import { Separator } from "../ui/separator";
 import Icon from "../shared/Icon";
 import Image from "next/image";
+import { onLogin } from "./loginActions";
+import { ILoginForm } from "@/types/login/login";
 
 export default function LoginCard() {
+	const [formData, setFormData] = useState<ILoginForm>({
+		username: "",
+		password: "",
+	});
+
+	const onChangeInput = ({ target }: { target: HTMLInputElement }) => {
+		const { name, value } = target;
+
+		setFormData((prevState) => ({
+			...prevState,
+			[name]: value,
+		}));
+	};
+
 	return (
 		<Card className="w-3/12 mx-auto h-fit shadow-xl">
 			<CardHeader>
@@ -30,12 +47,22 @@ export default function LoginCard() {
 			</CardHeader>
 
 			<CardContent>
-				<Input placeholder="Username" className="mb-4" />
-				<Input placeholder="Password" type="password" />
+				<Input
+					onChange={onChangeInput}
+					placeholder="Username"
+					name="username"
+					className="mb-4"
+				/>
+				<Input
+					onChange={onChangeInput}
+					placeholder="Password"
+					name="password"
+					type="password"
+				/>
 			</CardContent>
 
 			<CardFooter className="flex flex-col gap-2">
-				<Button className="w-full">
+				<Button className="w-full" onClick={() => onLogin(formData)}>
 					<Icon.Actions.Login className="text-2xl mr-2" />
 					Login
 				</Button>

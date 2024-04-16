@@ -8,3 +8,7 @@ export const encryptData = (data: string) => {
 	const encryptedData = bcrypt.hashSync(data, salt);
 	return encryptedData;
 };
+
+export const compareData = (encrypted: string, toCompare: string) => {
+	return bcrypt.compareSync(toCompare, encrypted);
+};
