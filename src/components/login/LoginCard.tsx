@@ -17,9 +17,8 @@ import { ILoginForm } from "@/types/login/login";
 import { useMutation } from "@tanstack/react-query";
 import { queryKeys } from "@/constants/queryKeys";
 import { __login } from "@/services/loginService";
-// @ts-ignore
-import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { __sonner } from "@/services/sonnerService";
 
 export default function LoginCard() {
 	const router = useRouter();
@@ -32,10 +31,7 @@ export default function LoginCard() {
 				return;
 			}
 
-			toast.success("Login success", {
-				position: "top-right",
-				closeButton: true,
-			});
+			__sonner.generalSuccess("Login success, you'll be redirect in a moment");
 
 			setTimeout(() => {
 				router.push("/dashboard");
@@ -61,6 +57,8 @@ export default function LoginCard() {
 		const validLogin = onLogin(formData);
 
 		if (!validLogin) {
+			console.log("called the sonner");
+			__sonner.generalError("Validate the given information");
 			return;
 		}
 
