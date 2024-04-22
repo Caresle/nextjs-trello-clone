@@ -14,8 +14,35 @@ import Icon from "../shared/Icon";
 import Image from "next/image";
 import { onLogin } from "./loginActions";
 import { ILoginForm } from "@/types/login/login";
+import { useMutation } from "@tanstack/react-query";
+import { queryKeys } from "@/constants/queryKeys";
+import { __login } from "@/services/loginService";
+// @ts-ignore
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function LoginCard() {
+	const router = useRouter();
+
+	const mut = useMutation({
+		mutationKey: [queryKeys.LOGIN],
+		mutationFn: (body: Object) => __login.post(body),
+		onSuccess: (response) => {
+			if (response === null) {
+				return;
+			}
+
+			toast.success("Login success", {
+				position: "top-right",
+				closeButton: true,
+			});
+
+			setTimeout(() => {
+				router.push("/dashboard");
+			}, 500);
+		},
+	});
+
 	const [formData, setFormData] = useState<ILoginForm>({
 		username: "",
 		password: "",
@@ -28,6 +55,16 @@ export default function LoginCard() {
 			...prevState,
 			[name]: value,
 		}));
+	};
+
+	const onSubmit = () => {
+		const validLogin = onLogin(formData);
+
+		if (!validLogin) {
+			return;
+		}
+
+		mut.mutate(formData);
 	};
 
 	return (
@@ -62,10 +99,13 @@ export default function LoginCard() {
 			</CardContent>
 
 			<CardFooter className="flex flex-col gap-2">
-				<Button className="w-full" onClick={() => onLogin(formData)}>
+				{/* Login */}
+				<Button className="w-full" onClick={onSubmit} disabled={mut.isPending}>
 					<Icon.Actions.Login className="text-2xl mr-2" />
 					Login
 				</Button>
+
+				{/* Sign Up */}
 				<Button className="w-full" variant={"outline"}>
 					<Icon.Actions.LogOut className="text-2xl mr-2" />
 					Sign Up
@@ -75,10 +115,13 @@ export default function LoginCard() {
 				<Separator className="my-2" />
 				<span>Or login with</span>
 
+				{/* Github */}
 				<Button className="w-full">
 					<Icon.Social.Github className="text-xl mr-2" />
 					GitHub
 				</Button>
+
+				{/* Google */}
 				<Button className="w-full" variant={"outline"}>
 					<Icon.Social.Google className="text-xl mr-2" />
 					Google

@@ -17,6 +17,7 @@ export const response = (
 		{
 			data,
 			msg,
+			status,
 		},
 		{
 			status,

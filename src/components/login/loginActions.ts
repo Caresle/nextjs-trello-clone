@@ -6,8 +6,8 @@ export const onLogin = (formData: ILoginForm) => {
 
 	if (!validation.success) {
 		console.log(validation);
-		return;
+		return false;
 	}
 
-	console.log("login");
+	return true;
 };

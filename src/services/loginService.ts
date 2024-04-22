@@ -1,13 +1,14 @@
 import { generalError } from "@/helpers/errorsHandler";
 import { post } from "@/lib/axios";
+import { IApiResponse } from "@/types/login/login";
 
 const BASE_ROUTE = "/login";
 
 export const __login = {
-	post: async (payload = {}) => {
+	post: async (payload = {}): Promise<IApiResponse | null> => {
 		try {
 			const res = await post(BASE_ROUTE, payload);
-			console.log(res);
+			return res.data;
 		} catch (error) {
 			return generalError(error);
 		}
