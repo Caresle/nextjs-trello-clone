@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const initApi = () => {
-	axios.defaults.baseURL = process.env.BASE_URL;
+	axios.defaults.baseURL = process.env.NEXT_PUBLIC_BASE_URL || "";
 };
 
 export const get = (route = "", params = {}) => {
